@@ -5,6 +5,10 @@ module.exports = app =>{
 
     app.get("/proyectos",proyecto.findAll);
 
+    app.get("/proyectos/ByName/:name",proyecto.findOneByN);
+    
+    app.get("/proyectos/ByCat/:categoria",proyecto.findByCategoria);
+
     app.get("/proyectos/:proyectoId",proyecto.findOne);
 
     app.put("/proyectos/:proyectoId",proyecto.update);

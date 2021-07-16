@@ -58,6 +58,39 @@ exports.findOne = (req,res) => {
     });
 };
 
+exports.findByCategoria = (req,res) => {
+    Proyecto.findByCategoria(req.params.categoria, (err, data) => {
+        if(err){
+            if(err.kind === "not_found"){
+                res.status(404).send({
+                    message: `No se encontro el proyecto con categoria ${req.params.categoria}` 
+                });
+            }
+            else {
+                res.status(500).send({
+                    message: "error con el usuario "+req.params.proyectoId
+                });
+            }
+        } else res.send(data);
+    });
+};
+
+exports.findOneByN = (req,res) => {
+    Proyecto.findByName(req.params.name, (err, data) => {
+        if(err){
+            if(err.kind === "not_found"){
+                res.status(404).send({
+                    message: `No se encontro el proyecto con el nombre ${req.params.name}` 
+                });
+            }
+            else {
+                res.status(500).send({
+                    message: "error con el nombre "+req.params.name
+                });
+            }
+        } else res.send(data);
+    });
+};
 exports.update = (req,res) => {
     if(!req.body){
         res.status(400).send({

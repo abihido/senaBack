@@ -9,6 +9,8 @@ const Proyecto = function(proyecto){
     this.active = proyecto.active;
     this.categoria = proyecto.categoria;
     this.idOrganizacion = proyecto.idOrganizacion;
+    this.presupuesto = proyecto.presupuesto;
+    
     
 };
 
@@ -43,7 +45,42 @@ Proyecto.create = (newProyecto, result) => {
       result({ kind: "not_found" }, null);
     });
   };
+  Proyecto.findByName = (name, result) => {
+    sql.query(`SELECT * FROM proyectos WHERE name = ${name}`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
   
+      if (res.length) {
+        console.log("Proyecto encontrado ", res[0]);
+        result(null, res[0]);
+        return;
+      }
+  
+      // not found Proyecto with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+  Proyecto.findByCategoria = (categoria, result) => {
+    sql.query(`SELECT * FROM proyectos WHERE categoria = ${categoria}`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+  
+      if (res.length) {
+        console.log("Proyecto encontrado ", res);
+        result(null, res);
+        return;
+      }
+  
+      // not found Proyecto with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
   Proyecto.getAll = result => {
     sql.query("SELECT * FROM proyectos", (err, res) => {
       if (err) {
@@ -59,8 +96,8 @@ Proyecto.create = (newProyecto, result) => {
   
   Proyecto.updateById = (id, proyecto, result) => {
     sql.query(
-      "UPDATE proyectos SET name = ?, avatar = ?,requisitos=?,ciudad=?,descripcion=?,active=?,categoria=?,idOrganizacion=? WHERE idProyectos = ?",
-      [proyecto.name, proyecto.avatar,proyecto.requisitos,proyecto.ciudad,proyecto.descripcion,proyecto.active,proyecto.categoria,proyecto.idOrganizacion, id],
+      "UPDATE proyectos SET name = ?, avatar = ?,requisitos=?,ciudad=?,descripcion=?,active=?,categoria=?,idOrganizacion=?, presupuesto=? WHERE idProyectos = ?",
+      [proyecto.name, proyecto.avatar,proyecto.requisitos,proyecto.ciudad,proyecto.descripcion,proyecto.active,proyecto.categoria,proyecto.idOrganizacion,proyecto.presupuesto, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);
