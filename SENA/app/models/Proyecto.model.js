@@ -64,7 +64,7 @@ Proyecto.create = (newProyecto, result) => {
     });
   };
   Proyecto.findByCategoria = (categoria, result) => {
-    sql.query(`SELECT * FROM proyectos WHERE categoria = ${categoria}`, (err, res) => {
+    sql.query(`SELECT * FROM proyectos WHERE categoria LIKE '%${categoria}%'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

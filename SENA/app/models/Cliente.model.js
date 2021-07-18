@@ -42,6 +42,7 @@ Cliente.create = (newCliente, result) => {
       }
   
       if (res.length) {
+        delete res[0].password;
         console.log("Cliente encontrado ", res[0]);
         result(null, res[0]);
         return;
@@ -81,7 +82,10 @@ Cliente.create = (newCliente, result) => {
         result(null, err);
         return;
       }
-  
+      res.forEach(element => {
+        delete element.password;
+      });
+      
       console.log("clientes: ", res);
       result(null, res);
     });

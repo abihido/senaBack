@@ -68,7 +68,7 @@ exports.findByCategoria = (req,res) => {
             }
             else {
                 res.status(500).send({
-                    message: "error con el usuario "+req.params.proyectoId
+                    message: "error con la categoria "+req.params.proyectoId
                 });
             }
         } else res.send(data);
