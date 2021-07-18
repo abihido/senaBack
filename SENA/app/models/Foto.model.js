@@ -3,7 +3,7 @@ const sql = require("./db.js");
 const Foto = function(foto){
     this.foto = foto.foto;
     this.idProyecto = foto.idProyecto;
-    this.aprovacion = foto.principal;
+    this.principal = foto.principal;
 };
 
 Foto.create = (newFoto, result) => {

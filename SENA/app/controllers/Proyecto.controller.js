@@ -68,13 +68,28 @@ exports.findByCategoria = (req,res) => {
             }
             else {
                 res.status(500).send({
-                    message: "error con la categoria "+req.params.proyectoId
+                    message: "error con la categoria "+req.params.categoria
                 });
             }
         } else res.send(data);
     });
 };
-
+exports.findByDescripcion = (req,res) => {
+    Proyecto.findByDescripcion(req.params.descripcion, (err, data) => {
+        if(err){
+            if(err.kind === "not_found"){
+                res.status(404).send({
+                    message: `No se encontro el proyecto con descripcion ${req.params.descripcion}` 
+                });
+            }
+            else {
+                res.status(500).send({
+                    message: "error con la categoria "+req.params.descripcion
+                });
+            }
+        } else res.send(data);
+    });
+};
 exports.findOneByN = (req,res) => {
     Proyecto.findByName(req.params.name, (err, data) => {
         if(err){

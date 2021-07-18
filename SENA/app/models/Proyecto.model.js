@@ -45,8 +45,27 @@ Proyecto.create = (newProyecto, result) => {
       result({ kind: "not_found" }, null);
     });
   };
+
   Proyecto.findByName = (name, result) => {
-    sql.query(`SELECT * FROM proyectos WHERE name = ${name}`, (err, res) => {
+    sql.query(`SELECT * FROM proyectos WHERE name LIKE '%${name}%'`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+  
+      if (res.length) {
+        console.log("Proyecto encontrado ", res[0]);
+        result(null, res[0]);
+        return;
+      }
+  
+      // not found Proyecto with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+  Proyecto.findByName = (descripcion, result) => {
+    sql.query(`SELECT * FROM proyectos WHERE descripcion LIKE '%${descripcion}%'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);

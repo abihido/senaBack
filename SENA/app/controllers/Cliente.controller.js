@@ -46,6 +46,8 @@ exports.findAll = (req,res) => {
     })
 };
 
+
+
 exports.findOne = (req,res) => {
     Cliente.findById(req.params.clienteId, (err, data) => {
         if(err){
@@ -57,6 +59,22 @@ exports.findOne = (req,res) => {
             else {
                 res.status(500).send({
                     message: "error con el usuario "+req.params.clienteId
+                });
+            }
+        } else res.send(data);
+    });
+};
+exports.confirm = (req,res) => {
+    Cliente.Confirm(req.params.mail,req.params.password, (err, data) => {
+        if(err){
+            if(err.kind === "not_found"){
+                res.status(404).send({
+                    message: `No se encontro el cliente con mail ${req.params.mail}` 
+                });
+            }
+            else {
+                res.status(500).send({
+                    message: "error con el usuario "+req.params.mail
                 });
             }
         } else res.send(data);

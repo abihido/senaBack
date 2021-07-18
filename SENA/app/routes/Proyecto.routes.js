@@ -9,6 +9,8 @@ module.exports = app =>{
     
     app.get("/proyectos/ByCat/:categoria",proyecto.findByCategoria);
 
+    app.get("/proyectos/ByDes/:descripcion",proyecto.findByDescripcion);
+
     app.get("/proyectos/:proyectoId",proyecto.findOne);
 
     app.put("/proyectos/:proyectoId",proyecto.update);
