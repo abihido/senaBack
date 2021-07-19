@@ -7,7 +7,7 @@ module.exports = app =>{
 
     app.get("/clientes/:clienteId",cliente.findOne);
 
-    app.get("/clientes/:mail/:password",cliente.confirm);
+    app.get("/clientes/login/:mail/:password",cliente.confirm);
 
     app.put("/clientes/:clienteId",cliente.update);
 
