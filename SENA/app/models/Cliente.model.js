@@ -53,7 +53,7 @@ Cliente.create = (newCliente, result) => {
     });
   };
   Cliente.Confirm = (mail,password,result) =>{
-    sql.query(`SELECT * FROM clientes WHERE mail="${mail}"`,(err,res) =>{
+    sql.query(`SELECT * FROM clientes WHERE mail='${mail}'`,(err,res) =>{
       if(err){
         console.log("error:",err);
         result(err, null);
@@ -92,25 +92,49 @@ Cliente.create = (newCliente, result) => {
   };
   
   Cliente.updateById = (id, cliente, result) => {
-    sql.query(
-      "UPDATE clientes SET mail = ?, name = ?, password = ?, avatar = ?,  documento=? ,celular=?, direccion=?,ciudad=?,curriculum=? , facebook =?,linkedin=?,twitter=?,instagram=? WHERE idClientes = ?",
-      [cliente.mail, cliente.name, cliente.password, cliente.avatar,cliente.documento,cliente.celular,cliente.direccion,cliente.ciudad,cliente.curriculum,cliente.facebook,cliente.linkedin,cliente.twitter,cliente.instagram, id],
-      (err, res) => {
-        if (err) {
-          console.log("error: ", err);
-          result(null, err);
-          return;
+    if(cliente.password==null){
+      sql.query(
+        "UPDATE clientes SET mail = ?, name = ?, avatar = ?,  documento=? ,celular=?, direccion=?,ciudad=?,curriculum=? , facebook =?,linkedin=?,twitter=?,instagram=? WHERE idClientes = ?",
+        [cliente.mail, cliente.name, cliente.avatar,cliente.documento,cliente.celular,cliente.direccion,cliente.ciudad,cliente.curriculum,cliente.facebook,cliente.linkedin,cliente.twitter,cliente.instagram, id],
+        (err, res) => {
+          if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+          }
+          if (res.affectedRows == 0) {
+            // not found Cliente with the id
+            result({ kind: "not_found por id" }, null);
+            return;
+          }
+    
+          console.log("Actualizado correctamente ", { id: id, ...cliente });
+          result(null, { id: id, ...cliente });
         }
-        if (res.affectedRows == 0) {
-          // not found Cliente with the id
-          result({ kind: "not_found por id" }, null);
-          return;
+      );
+    }
+    else{
+      sql.query(
+        "UPDATE clientes SET mail = ?, name = ?, password = ?, avatar = ?,  documento=? ,celular=?, direccion=?,ciudad=?,curriculum=? , facebook =?,linkedin=?,twitter=?,instagram=? WHERE idClientes = ?",
+        [cliente.mail, cliente.name, cliente.password, cliente.avatar,cliente.documento,cliente.celular,cliente.direccion,cliente.ciudad,cliente.curriculum,cliente.facebook,cliente.linkedin,cliente.twitter,cliente.instagram, id],
+        (err, res) => {
+          if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+          }
+          if (res.affectedRows == 0) {
+            // not found Cliente with the id
+            result({ kind: "not_found por id" }, null);
+            return;
+          }
+    
+          console.log("Actualizado correctamente ", { id: id, ...cliente });
+          result(null, { id: id, ...cliente });
         }
-  
-        console.log("Actualizado correctamente ", { id: id, ...cliente });
-        result(null, { id: id, ...cliente });
-      }
-    );
+      );
+    }
+    
   };
   
   Cliente.remove = (id, result) => {
