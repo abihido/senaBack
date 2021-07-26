@@ -6,7 +6,7 @@ const Organizacion = function(organizacion){
     this.celular= organizacion.celular;
     this.direccion= organizacion.direccion;
     this.descripcion = organizacion.descripcion;
-    this.palabrasClave = proyecto.palabrasClave;
+    this.palabrasClave = organizacion.palabrasClave;
     
 };
 
