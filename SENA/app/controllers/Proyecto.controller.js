@@ -15,8 +15,8 @@ exports.create = (req,res) => {
         active : req.body.active,
         categoria : req.body.categoria,
         idOrganizacion : req.body.idOrganizacion,
-        presupuesto = req.body.presupuesto,
-        actividad = req.body.actividad
+        presupuesto : req.body.presupuesto,
+        actividad : req.body.actividad
     });
 
     Proyecto.create(ProyectoC,(err,data) => {

@@ -21,8 +21,8 @@ exports.create = (req,res) => {
         linkedin : req.body.linkedin,
         twitter : req.body.twitter,
         instagram : req.body.instagram,
-        cargo = req.body.cargo,
-        estudio = req.body.estudio
+        cargo : req.body.cargo,
+        estudio : req.body.estudio
         
     });
 

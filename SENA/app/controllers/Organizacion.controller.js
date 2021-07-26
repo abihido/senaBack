@@ -13,7 +13,7 @@ exports.create = (req,res) => {
         celular: req.body.celular,
         direccion: req.body.direccion,
         descripcion : req.body.descripcion,
-        palabrasClave = req.body.palabrasClave
+        palabrasClave : req.body.palabrasClave
     });
 
     Organizacion.create(OrganizacionC,(err,data) => {
