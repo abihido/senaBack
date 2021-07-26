@@ -10,12 +10,13 @@ exports.create = (req,res) => {
     const ProyectoC = new Proyecto({
         name : req.body.name,
         avatar :req.body.avatar,
-        ciudad: req.body.ciudad,
         requisitos : req.body.requisitos,
         descripcion : req.body.descripcion,
         active : req.body.active,
         categoria : req.body.categoria,
-        idOrganizacion : req.body.idOrganizacion
+        idOrganizacion : req.body.idOrganizacion,
+        presupuesto = req.body.presupuesto,
+        actividad = req.body.actividad
     });
 
     Proyecto.create(ProyectoC,(err,data) => {

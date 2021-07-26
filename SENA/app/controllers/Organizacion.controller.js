@@ -12,8 +12,8 @@ exports.create = (req,res) => {
         avatar :req.body.avatar,
         celular: req.body.celular,
         direccion: req.body.direccion,
-        ciudad: req.body.ciudad,
-        descripcion : req.body.descripcion
+        descripcion : req.body.descripcion,
+        palabrasClave = req.body.palabrasClave
     });
 
     Organizacion.create(OrganizacionC,(err,data) => {

@@ -20,7 +20,10 @@ exports.create = (req,res) => {
         facebook : req.body.facebook,
         linkedin : req.body.linkedin,
         twitter : req.body.twitter,
-        instagram : req.body.instagram
+        instagram : req.body.instagram,
+        cargo = req.body.cargo,
+        estudio = req.body.estudio
+        
     });
 
     Cliente.create(ClienteC,(err,data) => {
