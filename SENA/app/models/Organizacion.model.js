@@ -43,7 +43,7 @@ Organizacion.create = (newOrganizacion, result) => {
   };
   
   Organizacion.getAll = result => {
-    sql.query("SELECT * FROM organizaciones", (err, res) => {
+    sql.query("SELECT name , avatar ,celular, direccion,descripcion,palabrasClave,idOrganizaciones FROM organizaciones", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
