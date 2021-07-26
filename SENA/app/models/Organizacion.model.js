@@ -7,6 +7,7 @@ const Organizacion = function(organizacion){
     this.direccion= organizacion.direccion;
     this.ciudad= organizacion.ciudad;
     this.descripcion = organizacion.descripcion;
+    this.palabrasClave = proyecto.palabrasClave;
     
 };
 
@@ -57,8 +58,8 @@ Organizacion.create = (newOrganizacion, result) => {
   
   Organizacion.updateById = (id, organizacion, result) => {
     sql.query(
-      "UPDATE organizaciones SET name = ?, avatar = ?,celular=?, direccion=?,ciudad=?,descripcion=? WHERE idOrganizaciones = ?",
-      [organizacion.name, organizacion.avatar,organizacion.celular,organizacion.direccion,organizacion.ciudad,organizacion.descripcion, id],
+      "UPDATE organizaciones SET name = ?, avatar = ?,celular=?, direccion=?,ciudad=?,descripcion=?,palabrasClave=? WHERE idOrganizaciones = ?",
+      [organizacion.name, organizacion.avatar,organizacion.celular,organizacion.direccion,organizacion.ciudad,organizacion.descripcion,organizacion.palabrasClave, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

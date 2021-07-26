@@ -17,6 +17,8 @@ const Cliente = function(cliente){
     this.linkedin = cliente.linkedin;
     this.twitter = cliente.twitter;
     this.instagram = cliente.instagram;
+    this.cargo = cliente.cargo;
+    this.estudio = cliente.estudio;
     
 };
 
@@ -94,8 +96,8 @@ Cliente.create = (newCliente, result) => {
   Cliente.updateById = (id, cliente, result) => {
     if(cliente.password==null){
       sql.query(
-        "UPDATE clientes SET mail = ?, name = ?, avatar = ?,  documento=? ,celular=?, direccion=?,ciudad=?,curriculum=? , facebook =?,linkedin=?,twitter=?,instagram=? WHERE idClientes = ?",
-        [cliente.mail, cliente.name, cliente.avatar,cliente.documento,cliente.celular,cliente.direccion,cliente.ciudad,cliente.curriculum,cliente.facebook,cliente.linkedin,cliente.twitter,cliente.instagram, id],
+        "UPDATE clientes SET mail = ?, name = ?, avatar = ?,  documento=? ,celular=?, direccion=?,ciudad=?,curriculum=? , facebook =?,linkedin=?,twitter=?,instagram=?,cargo=?,estudio=? WHERE idClientes = ?",
+        [cliente.mail, cliente.name, cliente.avatar,cliente.documento,cliente.celular,cliente.direccion,cliente.ciudad,cliente.curriculum,cliente.facebook,cliente.linkedin,cliente.twitter,cliente.instagram,cliente.cargo,cliente.estudio, id],
         (err, res) => {
           if (err) {
             console.log("error: ", err);

@@ -18,7 +18,7 @@ require("./app/routes/Financiacion.routes.js")(app);
 require("./app/routes/Organizacion.routes.js")(app);
 require("./app/routes/Proyecto.routes.js")(app);
 require("./app/routes/Solicitud.routes.js")(app);
-require("./app/routes/Foto.routes.js")
+require("./app/routes/Foto.routes.js")(app);
 
 /////////////////////////////////////////////////
 

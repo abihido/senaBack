@@ -3,13 +3,14 @@ const sql = require("./db.js");
 const Proyecto = function(proyecto){
     this.name = proyecto.name;
     this.avatar =proyecto.avatar;
-    this.ciudad= proyecto.ciudad;
     this.requisitos = proyecto.requisitos;
     this.descripcion = proyecto.descripcion;
     this.active = proyecto.active;
     this.categoria = proyecto.categoria;
     this.idOrganizacion = proyecto.idOrganizacion;
     this.presupuesto = proyecto.presupuesto;
+    this.actividad = proyecto.actividad;
+
     
     
 };
@@ -115,8 +116,8 @@ Proyecto.create = (newProyecto, result) => {
   
   Proyecto.updateById = (id, proyecto, result) => {
     sql.query(
-      "UPDATE proyectos SET name = ?, avatar = ?,requisitos=?,ciudad=?,descripcion=?,active=?,categoria=?,idOrganizacion=?, presupuesto=? WHERE idProyectos = ?",
-      [proyecto.name, proyecto.avatar,proyecto.requisitos,proyecto.ciudad,proyecto.descripcion,proyecto.active,proyecto.categoria,proyecto.idOrganizacion,proyecto.presupuesto, id],
+      "UPDATE proyectos SET name = ?, avatar = ?,requisitos=?,descripcion=?,active=?,categoria=?,idOrganizacion=?, presupuesto=?,actividad =? WHERE idProyectos = ?",
+      [proyecto.name, proyecto.avatar,proyecto.requisitos,proyecto.descripcion,proyecto.active,proyecto.categoria,proyecto.idOrganizacion,proyecto.presupuesto,proyecto.actividad, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

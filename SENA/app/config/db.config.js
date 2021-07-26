@@ -1,6 +1,6 @@
 module.exports = {
-    HOST: "localhost",
+    HOST: "3.19.56.158",
     USER: "root",
-    PASSWORD: "123456",
+    PASSWORD: "TPI_eco12345678",
     DB: "sena"
 };
