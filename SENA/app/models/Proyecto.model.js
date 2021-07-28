@@ -106,7 +106,7 @@ Proyecto.create = (newProyecto, result) => {
     });
   };
   Proyecto.getAll = result => {
-    sql.query("SELECT name ,requisitos,descripcion,active,categoria,idOrganizacion, presupuesto,actividad,idProyectos  FROM proyectos", (err, res) => {
+    sql.query("SELECT name ,requisitos,descripcion,active,categoria,idOrganizacion, presupuesto,actividad,idProyectos,puestos,avatarCreator,url  FROM proyectos", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
