@@ -16,6 +16,7 @@ exports.create = (req,res) => {
         categoria : req.body.categoria,
         idOrganizacion : req.body.idOrganizacion,
         presupuesto : req.body.presupuesto,
+        puestos: req.body.puestos,
         actividad : req.body.actividad,
         creator : req.body.creator,
         avatarCreator : req.body.avatarCreator,
