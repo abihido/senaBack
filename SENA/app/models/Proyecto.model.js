@@ -10,6 +10,9 @@ const Proyecto = function(proyecto){
     this.idOrganizacion = proyecto.idOrganizacion;
     this.presupuesto = proyecto.presupuesto;
     this.actividad = proyecto.actividad;
+    this.creator = proyecto.creator;
+    this.avatarCreator = proyecto.avatarCreator;
+    this.url = proyecto.url;
 
     
     

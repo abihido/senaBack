@@ -16,7 +16,10 @@ exports.create = (req,res) => {
         categoria : req.body.categoria,
         idOrganizacion : req.body.idOrganizacion,
         presupuesto : req.body.presupuesto,
-        actividad : req.body.actividad
+        actividad : req.body.actividad,
+        creator : req.body.creator,
+        avatarCreator : req.body.avatarCreator,
+        url : req.body.url
     });
 
     Proyecto.create(ProyectoC,(err,data) => {
